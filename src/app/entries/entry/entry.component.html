@@ -1,0 +1,38 @@
+<nz-breadcrumb>
+  <!--      <nz-breadcrumb-item>Home</nz-breadcrumb-item>-->
+        <nz-breadcrumb-item>Duo-Zrenjanin-Simo</nz-breadcrumb-item>
+        <nz-breadcrumb-item>Popust: 30%</nz-breadcrumb-item>
+  </nz-breadcrumb>
+<div class="form-container">
+
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="form">
+    <div>
+      <label for="search" class="form-label">Pretraga:</label>
+      <input type="text" id="search" (input)="searchProducts($event)" placeholder="Naziv artikla..." class="form-field">
+    </div>
+    <div>
+      <label for="product" class="form-label">Artikal:</label>
+      <select formControlName="product" class="form-field">
+        <option *ngFor="let product of filteredProducts" [value]="product">{{ product }}</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="price" class="form-label">Cena:</label>
+      <input type="number" formControlName="price" step="0.01" class="form-field">
+    </div>
+
+    <div>
+      <label for="amount" class="form-label">Komada:</label>
+      <input type="number" formControlName="amount" class="form-field">
+    </div>
+    <br>
+    <div class="btn-row">
+      <button type="submit" [disabled]="!productForm.valid" class="form-btn">Dodaj artikal</button>
+    </div>
+    <br>
+    <div class="btn-row">
+      <button type="button" (click)="getAddedProducts()" class="form-btn-m">Pregled</button>
+    </div>
+  </form>
+</div>
