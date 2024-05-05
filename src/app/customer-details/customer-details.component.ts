@@ -6,9 +6,9 @@ import { CustomerService } from '../services/customer.service';
 @Component({
   selector: 'app-customer-details',
   templateUrl: './customer-details.component.html',
-  styleUrls: ['./customer-details.component.css']
+  styleUrls: ['./customer-details.component.css'],
 })
-export class CustomerDetailsComponent implements OnInit{
+export class CustomerDetailsComponent implements OnInit {
   public customer!: Customer;
 
   constructor(
@@ -16,12 +16,11 @@ export class CustomerDetailsComponent implements OnInit{
     private route: ActivatedRoute
   ) {}
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params) => {
-      const id: number = Number(params.get('id'));
-      this.customer = this.customerService.users.filter(
-        (u) => u.id === id
-      )[0];
-    });
+    // this.route.paramMap.subscribe((params) => {
+    //   const id: number = Number(params.get('id'));
+    //   this.customer = this.customerService.users.filter(
+    //     (u) => u.id === id
+    //   )[0];
+    // });
   }
-
 }
