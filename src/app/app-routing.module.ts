@@ -15,12 +15,12 @@ import { CustomerTableComponent } from './customer-table/customer-table.componen
 
 const routes: Routes = [
 
-  { path: '', component: HomePageComponent, 
+  { path: '', component: HomePageComponent,
   canActivate: [AuthGuard] },
 
   { path: 'entry', component: EntryComponent,
    canActivate: [AuthGuard] },
- 
+
   { path: 'login', component: LoginFormComponent },
   { path: 'users', component: UserTableComponent, canActivate: [AuthGuard] },
   {
@@ -28,13 +28,12 @@ const routes: Routes = [
     component: UserDetailsComponent,
     canActivate: [AuthGuard],
   },
-  
+
   { path: 'blank', component: HomePageComponent, canActivate: [AuthGuard] },
-  { path: 'pregled', component: CustomerTableComponent,
-  //PregledComponent, 
-  canActivate: [AuthGuard]
+  { path: 'pregled', component: EntryComponent,
+     canActivate: [AuthGuard]
  },
- 
+
   {
     path: 'customer',
     component: CustomerTableComponent,

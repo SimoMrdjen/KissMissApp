@@ -66,13 +66,13 @@ export class EditCustomerService {
 })
 export class EditCustomerService implements OnInit {
 
-  private readonly url = BASE_URL + 'customer';
+  private readonly url = BASE_URL + '/customer';
   public customer: Customer | null = null;
   private visibilitySubject = new BehaviorSubject<boolean>(false);
   public visibility$ = this.visibilitySubject.asObservable();
   public isAddingCustomer: boolean = true;
 
-  constructor(private http: HttpClient, 
+  constructor(private http: HttpClient,
               private router: Router) {
     console.log('constructor() is running in service');
   }
@@ -108,7 +108,9 @@ export class EditCustomerService implements OnInit {
   }
 
   getCustomers(): Observable<Customer[]> {
-   return this.http.get<Customer[]>(this.url);
+    console.log('getCustomer in editCustomer service is called');
+// here is problem
+    return this.http.get<Customer[]>(this.url);
   }
 
   getCustomersWithoutSecurity(
