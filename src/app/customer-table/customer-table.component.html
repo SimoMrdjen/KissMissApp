@@ -1,7 +1,8 @@
 <p>customer-table works!</p>
 <app-edit-customer [title]="title"></app-edit-customer>
 <hr />
-<nz-table [nzData]="customers" #fixedTable [nzScroll]="{ x: '1000px', y: '500px' }">
+<nz-table *ngIf="customers$ | async as customers" [nzData]="customers" #fixedTable
+  [nzScroll]="{ x: '1000px', y: '500px' }">
   <thead>
     <tr>
       <th>Id</th>
@@ -27,8 +28,7 @@
       </td>
       <td>
         <a [routerLink]="['/customer', customer.id]">
-          <button nz-button nzType="primary">Prikazi kupca</button></a
-        >
+          <button nz-button nzType="primary">Prikazi kupca</button></a>
       </td>
     </tr>
   </tbody>

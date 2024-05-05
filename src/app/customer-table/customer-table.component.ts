@@ -1,27 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from '../models/customer.model';
 import { EditCustomerService } from '../services/edit-customer.service';
+import { CustomerService } from '../services/customer.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-customer-table',
   templateUrl: './customer-table.component.html',
-  styleUrls: ['./customer-table.component.css']
+  styleUrls: ['./customer-table.component.css'],
 })
 export class CustomerTableComponent implements OnInit {
-
   public customers: Customer[] = [];
   title: string = '';
+  customers$: Observable<Customer[]>;
 
-  constructor(private editCustomerService: EditCustomerService) {}
+  constructor(
+    private editCustomerService: EditCustomerService,
+    private customerService: CustomerService
+  ) {
+    this.customers$ = this.customerService.getCustomers();
+  }
 
-    ngOnInit(): void {
+  ngOnInit(): void {
+    this.customers = [
+      new Customer(1, 'Company A', 'New York', 'John Doe'),
+      new Customer(2, 'Company B', 'Los Angeles', 'Jane Smith'),
+    ];
 
-      this.customers = [
-        new Customer(1, "Company A", "New York", "John Doe"),
-        new Customer(2, "Company B", "Los Angeles", "Jane Smith")
-      ];
-
-   //this.getCustomers();
+    //this.getCustomers();
   }
 
   getCustomers(): void {
