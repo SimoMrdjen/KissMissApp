@@ -19,7 +19,7 @@ export class UserDetailsComponent implements OnInit {
     this.route.paramMap.subscribe((params) => {
       const id: number = Number(params.get('id'));
       this.user = this.userService.users.filter(
-        (u) => u.sifraradnika === id
+        (u) => u.id === id
       )[0];
     });
   }

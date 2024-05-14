@@ -9,7 +9,7 @@ import { BASE_URL } from '../constants';
   providedIn: 'root',
 })
 export class EditUserService implements OnInit {
-  private readonly url = BASE_URL + 'v1/users';
+  private readonly url = BASE_URL + 'users';
   public user: User | null = null;
   private visibilitySubject = new BehaviorSubject<boolean>(false);
   public visibility$ = this.visibilitySubject.asObservable();
@@ -25,8 +25,8 @@ export class EditUserService implements OnInit {
 
   getParams(): HttpParams {
     let params = new HttpParams();
-    if (this.user?.sifraradnika) {
-      params = params.append('id', this.user.sifraradnika);
+    if (this.user?.id) {
+      params = params.append('id', this.user.id);
     }
     return params;
   }

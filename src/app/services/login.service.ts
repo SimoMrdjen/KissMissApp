@@ -10,7 +10,7 @@ import { BASE_URL } from '../constants';
   providedIn: 'root',
 })
 export class LoginService {
-  private readonly url = BASE_URL + 'v1/auth/authenticate';
+  private readonly url = BASE_URL + 'auth/authenticate';
   user?: User;
 
   constructor(

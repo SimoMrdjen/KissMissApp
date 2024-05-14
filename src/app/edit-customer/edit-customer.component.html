@@ -1,4 +1,3 @@
-<p>edit-customer works!</p>
 <button nz-button nzType="primary" (click)="openAddCustomer()">Unesi kupca</button>
 <nz-drawer
   [nzBodyStyle]="{ overflow: 'auto' }"
@@ -11,32 +10,19 @@
 >
   <form nz-form *nzDrawerContent>
     <div nz-row [nzGutter]="8">
-      <div nz-col nzSpan="12">
-        <nz-form-item>
-          <nz-form-label>Id</nz-form-label>
-          <nz-form-control>
-            <input
-              nz-input
-              [ngModel]="customer?.id"
-              (ngModelChange)="customer && (customer.id = $event)"
-              placeholder="please enter Id"
-              name="id"
-            />
-          </nz-form-control>
-        </nz-form-item>
-      </div>
+     
     </div>
 
     <div nz-row [nzGutter]="8">
       <div nz-col nzSpan="12">
         <nz-form-item>
-          <nz-form-label>Name</nz-form-label>
+          <nz-form-label>Kupac</nz-form-label>
           <nz-form-control>
             <input
               nz-input
               [ngModel]="customer?.company"
               (ngModelChange)="customer && (customer.company = $event)"
-              placeholder="please enter company"
+              placeholder="Unesi ime ovlascenog lica"
               name="company"
             />
           </nz-form-control>
@@ -47,13 +33,13 @@
     <div nz-row [nzGutter]="8">
       <div nz-col nzSpan="12">
         <nz-form-item>
-          <nz-form-label>Password</nz-form-label>
+          <nz-form-label>Mesto</nz-form-label>
           <nz-form-control>
             <input
               nz-input
               [ngModel]="customer?.city"
               (ngModelChange)="customer && (customer.city = $event)"
-              placeholder="please enter city"
+              placeholder="unesi mesto kupca"
               name="city"
             />
           </nz-form-control>
@@ -61,7 +47,22 @@
       </div>
     </div>
 
- 
+    <div nz-row [nzGutter]="8">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label>Ovalsceno lice</nz-form-label>
+          <nz-form-control>
+            <input
+              nz-input
+              [ngModel]="customer?.person"
+              (ngModelChange)="customer && (customer.person = $event)"
+              placeholder="unesi mesto kupca"
+              name="person"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
 
           
 

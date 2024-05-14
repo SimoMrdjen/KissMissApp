@@ -12,7 +12,7 @@ import { ChangeDetectorRef } from '@angular/core';
 export class AppComponent implements OnInit, OnDestroy {
   indirektni?: string|null;
   private indirektniSubscription?: Subscription;
-  title = 'indirektni-psf';
+  title = 'Kiss Miss';
   role?: Role;
   Role = Role;
   kvartal: number | undefined;

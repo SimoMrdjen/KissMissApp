@@ -115,12 +115,7 @@ export class LoginFormComponent implements OnInit {
       this.loginService.login(this.user).subscribe({
         next: (response) => {
           console.log('Response from login:', response);
-
-          if (response.indirektni) {
-            localStorage.setItem('indirektni', response.indirektni);
-          } else {
-          }
-
+          
           if (response.access_token) {
             localStorage.setItem('token', response.access_token);
           }

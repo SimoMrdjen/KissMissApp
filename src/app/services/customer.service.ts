@@ -3,13 +3,15 @@ import { Customer } from '../models/customer.model';
 import { customersData } from '../database/customers';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { BASE_URL } from '../constants';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CustomerService {
-  private customers = customersData;
-  // private url = '/' stavi api koji gadjas npr ako je localhost 5700 onda private url = 'http://localhost:5700/'
+ // private customers = customersData;
+   private url = BASE_URL + 'customer' ;
+   
 
   constructor(private http: HttpClient) {}
 
