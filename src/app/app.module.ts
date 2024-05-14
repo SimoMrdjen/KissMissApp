@@ -48,7 +48,9 @@ import localeDe from '@angular/common/locales/de';
 import { CustomerComponent } from './customer/customer.component';
 import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import { CustomerTableComponent } from './customer-table/customer-table.component';
-import { CustomerDetailsComponent } from './customer-details/customer-details.component'; // or any other locale
+import { CustomerDetailsComponent } from './customer-details/customer-details.component';
+import { ArticleTableComponent } from './article-table/article-table.component';
+import { EditArticleComponent } from './edit-article/edit-article.component'; // or any other locale
 registerLocaleData(localeDe);
 
 @NgModule({
@@ -69,7 +71,9 @@ registerLocaleData(localeDe);
     CustomerComponent,
     EditCustomerComponent,
     CustomerTableComponent,
-    CustomerDetailsComponent
+    CustomerDetailsComponent,
+    ArticleTableComponent,
+    EditArticleComponent
   ],
   imports: [
     BrowserModule,

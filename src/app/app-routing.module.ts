@@ -10,6 +10,7 @@ import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { EntryComponent } from './entries/entry/entry.component';
 import { CustomerComponent } from './customer/customer.component';
 import { CustomerTableComponent } from './customer-table/customer-table.component';
+import { ArticleTableComponent } from './article-table/article-table.component';
 
 //dddddddddddddddddd
 
@@ -19,6 +20,8 @@ const routes: Routes = [
   canActivate: [AuthGuard] },
 
   { path: 'entry', component: EntryComponent,
+   canActivate: [AuthGuard] },
+   { path: 'article', component: ArticleTableComponent,
    canActivate: [AuthGuard] },
 
   { path: 'login', component: LoginFormComponent },
