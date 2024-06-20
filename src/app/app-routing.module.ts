@@ -11,12 +11,15 @@ import { EntryComponent } from './entries/entry/entry.component';
 import { CustomerComponent } from './customer/customer.component';
 import { CustomerTableComponent } from './customer-table/customer-table.component';
 import { ArticleTableComponent } from './article-table/article-table.component';
+import { InvoiceComponent } from './invoice/invoice.component';
 
 //dddddddddddddddddd
 
 const routes: Routes = [
 
   { path: '', component: HomePageComponent,
+  canActivate: [AuthGuard] },
+  { path: 'invoice', component: InvoiceComponent,
   canActivate: [AuthGuard] },
 
   { path: 'entry', component: EntryComponent,

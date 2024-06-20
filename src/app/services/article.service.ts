@@ -10,7 +10,7 @@ import { Article } from '../models/article.model';
 })
 export class ArticleService {
 
-  private url = BASE_URL + 'article' ;
+  private url = BASE_URL + '/article' ;
   public article: Article | null = null;
   private visibilitySubject = new BehaviorSubject<boolean>(false);
   public visibility$ = this.visibilitySubject.asObservable();

@@ -46,7 +46,7 @@ export class EditArticleComponent {
     this.articleService.open();
   }
 
-  editOrAddCustomer() {
+  editOrAddArticle() {
     if (this.articleService.isAddingArticle) {
       this.addArticle();
     } else {
@@ -95,7 +95,7 @@ export class EditArticleComponent {
     this.close();
     this.articleService.setArticle(new Article());
   }
-  openAddCustomer() {
+  openAddArticle() {
     this.title = 'Create';
     this.articleService.isAddingArticle = true;
     this.articleService.article = new Article();

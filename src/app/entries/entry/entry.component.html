@@ -13,7 +13,7 @@
     <div>
       <label for="product" class="form-label">Artikal:</label>
       <select formControlName="product" class="form-field">
-        <option *ngFor="let product of filteredProducts" [value]="product">{{ product }}</option>
+        <option *ngFor="let product of filteredProducts" [ngValue]="product.id">{{ product.code }}</option>
       </select>
     </div>
 

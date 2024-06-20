@@ -1,0 +1,39 @@
+<nz-breadcrumb>
+    <!--      <nz-breadcrumb-item>Home</nz-breadcrumb-item>-->
+          <nz-breadcrumb-item>Unos otpremnice</nz-breadcrumb-item>
+          <nz-breadcrumb-item>Popust: 30%</nz-breadcrumb-item>
+    </nz-breadcrumb>
+  <div class="form-container">
+  
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="form">
+      <div>
+        <label for="search" class="form-label">Pretraga kupaca:</label>
+        <input type="text" id="search" (input)="searchProducts($event)" placeholder="Kupac..." class="form-field">
+      </div>
+      <div>
+        <label for="customer" class="form-label">Kupac:</label>
+        <select formControlName="customer" class="form-field">
+          <option *ngFor="let customer of filteredCustomers$ | async" [value]="customer">{{ customer.company}}-{{ customer.city }}</option>
+        </select>
+      </div>
+  
+      <div>
+        <label for="discount" class="form-label">Popust:</label>
+        <input type="number" formControlName="discount" step="1" class="form-field">
+      </div>
+  
+    
+      <div class="btn-row">
+        <button type="submit" [disabled]="!productForm.valid" class="form-btn">
+            <a
+          [routerLink]="['/entry']"
+        >Nova otpremnica</a
+        >
+        
+        </button>
+       
+      </div>
+      <br>
+
+    </form>
+  </div>

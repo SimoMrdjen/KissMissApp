@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Customer } from '../models/customer.model';
 import { User } from '../models/user.model';
+import { CustomerService } from '../services/customer.service';
 import { EditCustomerService } from '../services/edit-customer.service';
 
 @Component({
@@ -13,12 +15,19 @@ export class CustomerComponent {
 
   public customers: Customer[] = [];
   title: string = 'Aaaaa';
+  customers$: Observable<Customer[]>;
+
 
   constructor(
     //private userService: EditCustomerService,
     private editCustomerService: EditCustomerService,
-    private http: HttpClient
-  ) {}
+    private http: HttpClient,
+    private customerService: CustomerService,
+
+  ) {
+    this.customers$ = this.customerService.getCustomers();
+
+  }
 
   ngOnInit(): void {
     this.getCustomers();

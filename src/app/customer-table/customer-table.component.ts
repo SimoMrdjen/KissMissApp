@@ -22,12 +22,7 @@ export class CustomerTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.customers = [
-      new Customer(1, 'Company A', 'New York', 'John Doe'),
-      new Customer(2, 'Company B', 'Los Angeles', 'Jane Smith'),
-    ];
-
-    //this.getCustomers();
+   this.getCustomers();
   }
 
   getCustomers(): void {

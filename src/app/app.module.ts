@@ -50,7 +50,8 @@ import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import { CustomerTableComponent } from './customer-table/customer-table.component';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 import { ArticleTableComponent } from './article-table/article-table.component';
-import { EditArticleComponent } from './edit-article/edit-article.component'; // or any other locale
+import { EditArticleComponent } from './edit-article/edit-article.component';
+import { InvoiceComponent } from './invoice/invoice.component'; // or any other locale
 registerLocaleData(localeDe);
 
 @NgModule({
@@ -73,7 +74,8 @@ registerLocaleData(localeDe);
     CustomerTableComponent,
     CustomerDetailsComponent,
     ArticleTableComponent,
-    EditArticleComponent
+    EditArticleComponent,
+    InvoiceComponent
   ],
   imports: [
     BrowserModule,

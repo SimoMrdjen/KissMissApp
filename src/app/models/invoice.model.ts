@@ -1,12 +1,13 @@
-import { InvoiceItem } from "./invoice-item.model";
+import { Customer } from "./customer.model";
+import InvoiceItem from "./invoice-item.model";
+import { User } from "./user.model";
 
 export class Invoice {
 
     public id?: number;
-    public price?: number;
-    public quantity?: number;
-    public discount?: number;
-    public articleType?: string;
-
+    public customer?: Customer;
+    public date?: Date;
+    public user?: User;
     public invoiceItem: InvoiceItem[] = [];
+    public discount: number = 0;
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Article } from 'src/app/models/article.model';
+import { InvoiceService } from 'src/app/services/invoice.service';
 
 @Component({
   selector: 'app-entry',
@@ -8,18 +10,34 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class EntryComponent implements OnInit {
   productForm!: FormGroup;
-  products: string[] = ['Artikal 1', 'Artikal 2', 'Artikal 3'];
-  filteredProducts: string[] = [];
+  products: Article[] = [];
+  filteredProducts: Article[] = [];
 
-  constructor(private fb: FormBuilder) {}
-
-  ngOnInit(): void {
+  constructor(private fb: FormBuilder, private invoiceService: InvoiceService) {
     this.productForm = this.fb.group({
       product: ['', Validators.required],
-      price: [null, Validators.required],
+      price: [{value: null, disabled: true}, Validators.required],
       amount: [1, [Validators.required, Validators.min(0)]],
     });
-    this.filteredProducts = this.products.slice();
+  }
+
+  ngOnInit(): void {
+    // Subscribe to the products observable
+    this.invoiceService.products$.subscribe({
+      next: (products) => {
+        this.products = products;
+        this.filteredProducts = this.products.slice(); // To trigger Angular change detection
+      },
+      error: (error) => console.error('Failed to load products:', error),
+    });
+
+    // React to product selection changes to update the price field
+    this.productForm.get('product')!.valueChanges.subscribe(productId => {
+      const selectedProduct = this.products.find(product => product.id === productId);
+      if (selectedProduct) {
+        this.productForm.get('price')!.setValue(selectedProduct.price);
+      }
+    });
   }
 
   onSubmit() {
@@ -32,9 +50,7 @@ export class EntryComponent implements OnInit {
   }
 
   searchProducts(event: Event) {
-    const value = (event.target as HTMLInputElement).value;
-    this.filteredProducts = this.products.filter((product) =>
-      product.toLowerCase().includes(value.toLowerCase())
-    );
+    const value = (event.target as HTMLInputElement).value.toLowerCase();
+    this.filteredProducts = this.products.filter(product => product.code?.toLowerCase().includes(value));
   }
 }
